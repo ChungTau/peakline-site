@@ -18,6 +18,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <script src="assets/js/site.js"></script>
+<script src="assets/js/journey.js" defer></script>
 </head>
 <body>
 
@@ -36,18 +37,51 @@
 
 <main>
 
-<div class="hero">
-  <div class="wrap">
-    <div>
+<!-- A flight over Hong Kong, drawn frame by frame by Peakline's own engine
+     and played by the scroll (assets/js/journey.js). -->
+<section class="journey" aria-label="A flight over Hong Kong">
+  <div class="stage">
+    <picture>
+      <source media="(max-aspect-ratio: 85/100)" srcset="assets/journey/port/f000.webp">
+      <img class="poster" src="assets/journey/land/f000.webp" alt="" width="1600" height="900">
+    </picture>
+    <canvas role="img" aria-label="Peakline's 3D map: from Victoria Harbour at dusk, up Nathan Road to Lion Rock and the MacLehose Trail, then Yau Ma Tei with its windows lit at night"></canvas>
+    <div class="shade"></div>
+    <div class="loading"><i></i></div>
+    <div class="topline wrap">
       <span class="eyebrow"><i></i><span class="en">For iPhone · Coming soon</span><span class="zh">iPhone 版 · 即將推出</span></span>
-      <h1>
-        <span class="en">Hong Kong,<br><span class="accent">in 3D.</span></span>
-        <span class="zh">全港，<br><span class="accent">立體呈現。</span></span>
-      </h1>
-      <p class="lead">
-        <span class="en">Every hill, street and harbour, drawn on your iPhone. Open your trail, fly it at golden hour or under the stars, and share the video.</span>
-        <span class="zh">每座山、每條街、每個海港，都在你的 iPhone 上立體呈現。打開你的路線，在黃昏或星空下飛越它，再把影片分享出去。</span>
-      </p>
+      <span class="clock"><span class="en">Hong Kong</span><span class="zh">香港</span><b>17:30</b></span>
+    </div>
+
+    <div class="chapter on">
+      <span class="num">01</span><span class="where"><span class="en">Victoria Harbour</span><span class="zh">維多利亞港</span></span>
+      <h1><span class="en">Hong Kong, <span class="accent">in 3D.</span></span><span class="zh">全港，<span class="accent">立體呈現。</span></span></h1>
+      <p><span class="en">Every hill, street and harbour, drawn on your iPhone. Every frame here is Peakline's own map.</span><span class="zh">每座山、每條街、每個海港，都在你的 iPhone 上立體呈現。這裏的每一格畫面，都出自 Peakline 的地圖。</span></p>
+    </div>
+    <div class="chapter">
+      <span class="num">02</span><span class="where"><span class="en">Nathan Road</span><span class="zh">彌敦道</span></span>
+      <h2><span class="en">Every <span class="accent">street.</span></span><span class="zh">每一條<span class="accent">街。</span></span></h2>
+      <p><span class="en">Buildings, flyovers and the markings on the road, from the Government's own survey.</span><span class="zh">大廈、天橋以至路面標記，全部來自政府的測繪數據。</span></p>
+    </div>
+    <div class="chapter">
+      <span class="num">03</span><span class="where"><span class="en">Lion Rock</span><span class="zh">獅子山</span></span>
+      <h2><span class="en">Every <span class="accent">hill.</span></span><span class="zh">每一座<span class="accent">山。</span></span></h2>
+      <p><span class="en">The real shape of every ridge and valley, from Lantau to Sai Kung, in the light of the hour.</span><span class="zh">由大嶼山到西貢，每道山脊、每個山谷的真實地形，在當刻的光影之下。</span></p>
+    </div>
+    <div class="chapter">
+      <span class="num">04</span><span class="where"><span class="en">MacLehose Trail</span><span class="zh">麥理浩徑</span></span>
+      <h2><span class="en">Your trail, <span class="accent">in its place.</span></span><span class="zh">你的路線，<span class="accent">回到原地。</span></span></h2>
+      <p><span class="en">Open a GPX from any app. Peakline lays it over the hills, with its climb and your checkpoints.</span><span class="zh">從任何 App 打開 GPX，Peakline 把它鋪在山上，連同爬升和你的檢查站。</span></p>
+    </div>
+    <div class="chapter">
+      <span class="num">05</span><span class="where"><span class="en">Yau Ma Tei</span><span class="zh">油麻地</span></span>
+      <h2><span class="en">Then the city <span class="accent">lights up.</span></span><span class="zh">然後，城市<span class="accent">亮起來。</span></span></h2>
+      <p><span class="en">Choose any hour. After sunset, windows light up one by one, each building on its own hours, under the real stars.</span><span class="zh">隨意選擇時間。日落之後，窗戶逐一亮起，每幢大廈各有作息，頭上是真實的星空。</span></p>
+    </div>
+    <div class="chapter">
+      <span class="num">06</span><span class="where"><span class="en">Lion Rock, at night</span><span class="zh">夜幕下的獅子山</span></span>
+      <h2><span class="en">Fly it. <span class="accent">Share it.</span></span><span class="zh">飛越它，<span class="accent">分享它。</span></span></h2>
+      <p><span class="en">Turn your trail into a flight over Hong Kong, at golden hour or under the stars, and share the video.</span><span class="zh">把你的路線變成一段飛越香港的影片，黃昏或星空下都可以，再分享出去。</span></p>
       <div class="ctas">
         <span class="btn primary" aria-disabled="true">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
@@ -57,17 +91,18 @@
       </div>
       <p class="soon"><span class="en">Free to explore. iPhone with iOS 26 or later.</span><span class="zh">免費探索地圖。需要 iOS 26 或以上的 iPhone。</span></p>
     </div>
-    <div class="hero-art">
-      <div class="phone tilt"><img src="assets/img/shot-kowloon.jpg" alt="Kowloon and Lion Rock in Peakline, late afternoon" width="1206" height="2622"></div>
-    </div>
+
+    <nav class="dots" aria-label="Chapters">
+      <button type="button"><span><span class="en">Harbour</span><span class="zh">海港</span></span><i></i></button>
+      <button type="button"><span><span class="en">Streets</span><span class="zh">街道</span></span><i></i></button>
+      <button type="button"><span><span class="en">Hills</span><span class="zh">山嶺</span></span><i></i></button>
+      <button type="button"><span><span class="en">Trail</span><span class="zh">路線</span></span><i></i></button>
+      <button type="button"><span><span class="en">Night</span><span class="zh">入夜</span></span><i></i></button>
+      <button type="button"><span><span class="en">Share</span><span class="zh">分享</span></span><i></i></button>
+    </nav>
+    <div class="hint"><span class="en">Scroll to fly</span><span class="zh">向下捲動，起飛</span></div>
   </div>
-    <svg class="ridge" viewBox="0 -60 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <path d="M0,360 L0.0,358.8 L133.0,315.9 L224.0,265.2 L287.0,210.6 L299.6,156.0 L316.4,101.4 L344.4,66.3 L399.0,40.6 L469.0,31.2 L539.0,39.0 L595.0,64.0 L632.8,95.2 L700.0,107.6 L812.0,118.6 L952.0,135.7 L1092.0,154.4 L1232.0,176.3 L1433.6,205.9 L1440,206 L1440,360 Z" fill="#14132c"/>
-      <g fill="#1f1e44"><rect x="20" y="297.0" width="60" height="63.0"/><rect x="90" y="276.0" width="50" height="84.0"/><rect x="150" y="293.5" width="70" height="66.5"/><rect x="232" y="262.0" width="48" height="98.0"/><rect x="290" y="286.5" width="66" height="73.5"/><rect x="366" y="304.0" width="52" height="56.0"/><rect x="428" y="277.4" width="74" height="82.6"/><rect x="512" y="295.6" width="48" height="64.4"/><rect x="570" y="267.6" width="62" height="92.4"/><rect x="642" y="291.4" width="52" height="68.6"/><rect x="704" y="281.6" width="70" height="78.4"/><rect x="784" y="301.2" width="52" height="58.8"/><rect x="846" y="271.8" width="66" height="88.2"/><rect x="922" y="294.2" width="56" height="65.8"/><rect x="980" y="283.0" width="50" height="77.0"/><rect x="1040" y="270.4" width="64" height="89.6"/><rect x="1110" y="292.8" width="54" height="67.2"/><rect x="1170" y="276.0" width="70" height="84.0"/><rect x="1250" y="298.4" width="50" height="61.6"/><rect x="1310" y="278.8" width="64" height="81.2"/><rect x="1380" y="290.0" width="60" height="70.0"/></g>
-      <path class="trail" d="M1440,203 L1433.6,202.9 L1232.0,173.3 L1092.0,151.4 L952.0,132.7 L812.0,115.6 L700.0,104.6 L632.8,92.2 L595.0,61.0 L539.0,36.0 L469.0,28.2 L399.0,37.6" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      <g class="pin"><path d="M460.0,5.199999999999999 L469.0,25.2 L478.0,5.199999999999999 Z" fill="#fff"/><circle cx="469.0" cy="-4.800000000000001" r="16" fill="#fff"/><circle cx="469.0" cy="-4.800000000000001" r="10" fill="#ff5c1f"/></g>
-    </svg>
-</div>
+</section>
 
 <section id="map">
   <div class="wrap">
