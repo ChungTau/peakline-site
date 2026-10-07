@@ -36,6 +36,32 @@
   // As the page's CSS picks the first frame: (max-aspect-ratio: 85/100).
   function shape() { return window.innerWidth / window.innerHeight <= 0.85 ? "port" : "land"; }
   var set = shape();
+
+  // With ?debug in the address, what the journey does, over the page, so a
+  // phone can show why the flight does not move; with ?debug&auto it also
+  // scrolls itself through.
+  var log = function () {};
+  if (/[?&]debug\b/.test(location.search)) {
+    var board = document.createElement("pre");
+    board.style.cssText = "position:fixed;z-index:99;left:0;right:0;bottom:0;margin:0;max-height:45vh;overflow:auto;" +
+      "font:11px/1.35 ui-monospace,monospace;color:#fff;background:rgba(0,0,0,.75);padding:8px;white-space:pre-wrap";
+    document.body.appendChild(board);
+    var lines = [];
+    log = function (text) {
+      lines.push((performance.now() / 1000).toFixed(1) + " " + text);
+      if (lines.length > 30) lines.shift();
+      board.textContent = lines.join("\n");
+    };
+    log(set + " dpr " + window.devicePixelRatio + " reduce " + reduce.matches + " | " + navigator.userAgent);
+    if (/[?&]auto\b/.test(location.search)) {
+      setTimeout(function () {
+        var timer = setInterval(function () {
+          window.scrollTo({ top: window.scrollY + 4, behavior: "instant" });
+          if (section.getBoundingClientRect().bottom <= window.innerHeight) clearInterval(timer);
+        }, 16);
+      }, 4000);
+    }
+  }
   var generation = 0;
   var stills = [];        // each chapter's frame, while the video comes
   var video = null;       // ready to seek
@@ -145,12 +171,16 @@
       var middle = context.getImageData(canvas.width >> 1, canvas.height >> 1, 4, 4).data;
       var brightest = 0;
       for (var i = 0; i < middle.length; i += 4) brightest = Math.max(brightest, middle[i], middle[i + 1], middle[i + 2]);
+      log("first frame, brightest " + brightest);
       if (brightest < 4) { video = null; sought = -1; shown = ""; request(); return; }
     }
     shown = "v" + sought;
+    seeks += 1;
+    if (seeks % 30 === 1) log("seek " + seeks + " to frame " + sought);
     sought = -1;
     request();
   }
+  var seeks = 0;
 
   // Each chapter's frame first, then the video, read whole so that seeking
   // never waits on the network.
@@ -172,6 +202,7 @@
     fetch(base + ".mp4").then(function (response) {
       if (!response.ok) throw new Error(response.status);
       var length = Number(response.headers.get("Content-Length")) || 0;
+      log("fetch " + response.status + ", " + length + " bytes");
       if (!response.body || !length) return response.blob();
       var reader = response.body.getReader();
       var parts = [];
@@ -187,6 +218,7 @@
       }
       return pump();
     }).then(function (blob) {
+      log("blob " + blob.size + " bytes");
       if (mine !== generation) return;
       var element = document.createElement("video");
       element.muted = true;
@@ -197,22 +229,39 @@
       element.preload = "auto";
       element.className = "frames";
       element.addEventListener("seeked", onSought);
-      element.addEventListener("loadeddata", function () {
-        // iOS shows a sought frame only once the video has played.
-        var started = element.play();
-        var ready = function () {
-          element.pause();
-          if (mine !== generation) return;
-          video = element;
-          shown = "";
-          if (bar) { bar.style.width = "100%"; bar.parentNode.classList.add("done"); }
-          request();
-        };
-        if (started && started.then) started.then(ready, ready); else ready();
-      }, { once: true });
+      ["loadedmetadata", "loadeddata", "canplay", "playing", "pause", "suspend", "stalled", "waiting", "error"].forEach(function (name) {
+        element.addEventListener(name, function () { log("video " + name + ", ready " + element.readyState + (element.error ? ", error " + element.error.code : "")); });
+      });
       element.src = URL.createObjectURL(blob);
       section.querySelector(".stage").appendChild(element);
-    }).catch(function () { /* the chapters' frames stay */ });
+      // iOS reads a video's frames only to play it, never for preload, and
+      // plays it, muted and inline, without a tap unless the phone is saving
+      // power: then the first tap starts it.
+      function ready() {
+        element.pause();
+        if (mine !== generation) return;
+        video = element;
+        shown = "";
+        section.classList.remove("tap");
+        if (bar) { bar.style.width = "100%"; bar.parentNode.classList.add("done"); }
+        request();
+      }
+      function start() {
+        var started = element.play();
+        if (!started || !started.then) { element.addEventListener("loadeddata", ready, { once: true }); return; }
+        started.then(function () {
+          log("play resolved, ready " + element.readyState);
+          if (element.readyState >= 2) ready(); else element.addEventListener("loadeddata", ready, { once: true });
+        }, function (error) {
+          log("play refused: " + error);
+          if (mine !== generation) return;
+          section.classList.add("tap");
+          document.addEventListener("touchend", start, { once: true });
+          document.addEventListener("click", start, { once: true });
+        });
+      }
+      start();
+    }).catch(function (error) { log("failed: " + error); /* the chapters' frames stay */ });
   }
 
   var ticking = false;

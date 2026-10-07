@@ -114,6 +114,10 @@ html[data-lang="zh"] .en, html:not([data-lang="zh"]) .zh { display: none !import
   display: flex; flex-direction: column; align-items: center; gap: 8px; transition: opacity 0.4s ease; }
 .hint::after { content: ""; width: 2px; height: 26px; border-radius: 2px; background: linear-gradient(var(--ink), transparent); animation: nudge 1.6s ease-in-out infinite; }
 .hint.gone { opacity: 0; }
+/* Where the phone would not play the video without a tap (saving power). */
+.hint .tap, .journey.tap .hint .scroll { display: none; }
+.journey.tap .hint .tap { display: inline; }
+.journey.tap .hint.gone { opacity: 1; }
 @keyframes nudge { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(8px); opacity: 1; } }
 .loading { position: absolute; left: 0; right: 0; top: 64px; height: 2px; background: transparent; }
 .loading i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--orange), #ffd29a); transition: width 0.3s ease; }

@@ -26,6 +26,10 @@ of service, in English and Traditional Chinese.
   until the video arrives, the nearest chapter's frame stands in. With
   reduced motion it steps from chapter to chapter; without script, the first
   chapter shows over its frame.
+  iOS reads a video only to play it, so the page plays it once, muted, and
+  pauses; where the phone refuses (saving power), the hint asks for a tap.
+  Add `?debug` to the address to see what the journey does over the page,
+  `?debug&auto` to have it scroll itself through.
 - `assets/img/` — the app's icon at three sizes, the share image, and three
   screenshots from the iOS simulator.
 
