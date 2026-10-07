@@ -15,14 +15,17 @@ of service, in English and Traditional Chinese.
   [asklex.law/journey](https://asklex.law/journey/): a flight from Victoria
   Harbour at 17:30, up Nathan Road to Lion Rock and the MacLehose Trail, down
   into Yau Ma Tei at 21:00 and up to the trail under the stars. Each of its
-  151 frames is a still from Peakline's own engine (`hk3d-viewer`), in a
-  landscape set (`assets/journey/land/`, 1600×900) and a portrait one for
-  phones (`assets/journey/port/`, 810×1440). `tools/journey.py` prints the
-  command for every frame. `assets/js/journey.js` pins the stage, draws the
-  frame for the scroll on a canvas, holds each chapter while its words show,
-  and loads a few frames across the flight first, then the rest. With
+  451 frames is a still from Peakline's own engine (`hk3d-viewer`), drawn
+  larger than shown and scaled down, in a landscape video
+  (`assets/journey/land.mp4`, 2560×1440) and a portrait one for phones
+  (`port.mp4`, 1152×2304), each with its six chapters' frames as WebP.
+  `tools/journey.py` prints the command for every frame and says how they
+  were encoded. `assets/js/journey.js` pins the stage, reads the video whole
+  and seeks it frame by frame onto a canvas, following the scroll eased so
+  that a wheel's steps glide, and holds each chapter while its words show;
+  until the video arrives, the nearest chapter's frame stands in. With
   reduced motion it steps from chapter to chapter; without script, the first
-  chapter shows over the first frame.
+  chapter shows over its frame.
 - `assets/img/` — the app's icon at three sizes, the share image, and three
   screenshots from the iOS simulator.
 

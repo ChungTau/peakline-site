@@ -1,27 +1,37 @@
 """The landing page's journey: the camera's keyframes over Hong Kong, eased
 between, the light running from dusk into night. Prints one hk3d-viewer
-command line per frame; run them, then turn the PNGs into WebP:
+command line per frame (451 of them):
 
-    python3 tools/journey.py 1600x900 OUT VIEWER PACKS GPX | sh
-    cwebp -q 60 -m 6 OUT/f000.png -o assets/journey/land/f000.webp   # each frame
-    python3 tools/journey.py 900x1600 OUT VIEWER PACKS GPX | sh        # portrait
-    cwebp -q 60 -m 6 -resize 810 1440 ...                             # into port/
+    python3 tools/journey.py 3840x2160 3 OUT VIEWER PACKS GPX | sh   # landscape
+    python3 tools/journey.py 2304x4608 6 OUT VIEWER PACKS GPX | sh   # portrait
+
+The second argument is pixels a point for the route's line and pins (the
+viewer's --scale): 3 for a 4K frame shown about 1440 points wide, 6 for a
+portrait frame shown 390 wide, as the app draws them. The frames are drawn at
+twice (portrait) or 1.5 times (landscape) the size they are shown, then
+scaled down with Lanczos and encoded as H.264 at 30 frames a second, a
+keyframe every 15 and no reordering, so the page can seek to any frame:
+assets/journey/land.mp4 at 2560x1440 and 11 Mbit/s, port.mp4 at 1152x2304
+and 8 Mbit/s. Each chapter's frame is also a WebP (q80), c0 to c5, shown
+until the video has arrived. The encoder is a small AVFoundation tool; any
+H.264 encoder with those settings will do.
 
 VIEWER is the engine's target/release/hk3d-viewer; PACKS, comma-separated,
 were Tier 0 and Tier 1 of 2026-09-29-widths with the demo's Yau Tsim Mong
 markings and surfaces packs; GPX is MacLehose Trail sections 5 and 6. The
-chapters' frames and times are also in assets/js/journey.js (KEYS, MINUTES).
+chapters' frames and times are also in assets/js/journey.js (KEYS, MINUTES,
+RAMP).
 """
 import math, sys
 
 # (east, north, distance m, heading deg, tilt deg, minutes after 17:00, frames to it)
 KEYS = [
     (835450, 816800, 6500, 340, 58, 30, 0),    # 1 Hong Kong, in 3D: over the harbour
-    (835650, 818700, 1300, 350, 66, 38, 30),   # 2 every street: Nathan Road
-    (836900, 822600, 2400, 20, 70, 46, 30),    # 3 every hill: towards Lion Rock
-    (837270, 823640, 1900, 280, 64, 54, 30),   # 4 your trail: along the ridge
-    (835600, 819350, 300, 30, 58, 240, 36),    # 5 after dark: a tower in Yau Ma Tei, its windows lit
-    (835650, 819550, 650, 20, 79, 255, 24),    # 6 share it: up to the trail on the ridge, under the stars
+    (835650, 818700, 1300, 350, 66, 38, 90),   # 2 every street: Nathan Road
+    (836900, 822600, 2400, 20, 70, 46, 90),    # 3 every hill: towards Lion Rock
+    (837270, 823640, 1900, 280, 64, 54, 90),   # 4 your trail: along the ridge
+    (835600, 819350, 300, 30, 58, 240, 90),    # 5 after dark: a tower in Yau Ma Tei, its windows lit
+    (835650, 819550, 650, 20, 79, 255, 90),    # 6 share it: up to the trail on the ridge, under the stars
 ]
 
 # On a phone, tilted further and the last pulled back, so the horizon (and the
@@ -32,8 +42,19 @@ PORTRAIT_DISTANCE = [1, 1, 1, 1, 1, 850 / 650]
 def portrait(keys):
     return [(e, n, d * k, h, t + a, m, f) for (e, n, d, h, t, m, f), a, k in zip(keys, PORTRAIT_TILT, PORTRAIT_DISTANCE)]
 
+# Each run speeds up over its first quarter, keeps its speed and slows over
+# its last: the camera moves as evenly as it can from frame to frame, at a
+# third above its mean speed at most. assets/js/journey.js paces its clock
+# the same.
+RAMP = 0.25
+
 def ease(s):
-    return s * s * (3 - 2 * s)
+    top = 1 / (1 - RAMP)
+    if s < RAMP:
+        return top * s * s / (2 * RAMP)
+    if s > 1 - RAMP:
+        return 1 - ease(1 - s)
+    return top * (s - RAMP / 2)
 
 def frames(keys):
     out = [keys[0][:6]]
@@ -55,12 +76,12 @@ def frames(keys):
     return out
 
 if __name__ == "__main__":
-    size, outdir = sys.argv[1], sys.argv[2]
-    viewer, packs, gpx = sys.argv[3], sys.argv[4].split(","), sys.argv[5]
+    size, scale, outdir = sys.argv[1], sys.argv[2], sys.argv[3]
+    viewer, packs, gpx = sys.argv[4], sys.argv[5].split(","), sys.argv[6]
     w, h = (int(x) for x in size.split("x"))
     for i, (e, n, d, h, t, m) in enumerate(frames(portrait(KEYS) if h > w else KEYS)):
         hh, mm = divmod(int(round(m)), 60)
         pack_args = " ".join(f"--pack {p}" for p in packs)
         print(f"{viewer} --headless {pack_args} --gpx {gpx} --time 2026-10-07T{17 + hh:02d}:{mm:02d} "
               f"--at {e:.1f},{n:.1f} --distance {d:.1f} --heading {h:.2f} --tilt {t:.2f} "
-              f"--size {size} --msaa 4 --out {outdir}/f{i:03d}.png")
+              f"--size {size} --scale {scale} --msaa 4 --out {outdir}/f{i:03d}.png")
