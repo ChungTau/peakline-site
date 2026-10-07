@@ -1,0 +1,4 @@
+__pycache__/
+# Temporary files AVFoundation leaves beside a video it wrote.
+*.sb-*
+.DS_Store
