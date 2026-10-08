@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peakline OpenStreetMap Data</title>
+<meta name="title-en" content="Peakline OpenStreetMap Data">
+<meta name="title-zh" content="Peakline OpenStreetMap 數據">
+<meta name="description" content="The paths' surfaces and stairs that Peakline carries, derived from OpenStreetMap and available under the Open Database License.">
+<meta name="theme-color" content="#14112f">
+<link rel="icon" type="image/png" href="../assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/img/icon-512.png" alt=""><span>Peak<b>line</b></span></a>
+    <nav>
+      <a href="../privacy/"><span class="en">Privacy</span><span class="zh">私隱政策</span></a>
+      <a href="../terms/"><span class="en">Terms</span><span class="zh">服務條款</span></a>
+      <button class="lang" type="button" aria-label="Language"><span class="en">中文</span><span class="zh">EN</span></button>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+
+<div class="en">
+  <h1>Surfaces and stairs, from OpenStreetMap</h1>
+  <p class="date">Published 8 October 2026</p>
+
+  <p class="summary">Peakline carries a database of paths' surfaces and flights of stairs, for the strips under a route's elevation chart. It is derived from OpenStreetMap, and you may have it here, free, under the Open Database License.</p>
+
+  <h2>Licence</h2>
+  <p>This database is made available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License 1.0 (ODbL)</a>. It is derived from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, © OpenStreetMap contributors, which is made available under the same licence.</p>
+  <p>You may copy, distribute and adapt it under the ODbL's terms: keep this notice with it, credit OpenStreetMap, and offer what you derive from it under the ODbL.</p>
+
+  <h2>Download</h2>
+  <ul>
+    <li><a href="surfaces.geojson.gz">surfaces.geojson.gz</a> (4.7 MB, 30 MB unpacked): the lines as GeoJSON in WGS84, each with its <code>surface</code> (or <code>null</code>) and whether it is <code>stairs</code>.</li>
+    <li><a href="surfaces.hk3a">surfaces.hk3a</a> (2.1 MB): the same lines exactly as the app carries them.</li>
+    <li><a href="SHA256SUMS">SHA256SUMS</a></li>
+  </ul>
+
+  <h2>What it holds</h2>
+  <p>From Geofabrik's Hong Kong extract of OpenStreetMap, of 5 October 2026:</p>
+  <ul>
+    <li>every way whose <code>surface</code> tag names a known surface, as one of ten: asphalt, concrete, paving, gravel, dirt, grass, sand, wood, paved, unpaved;</li>
+    <li>every way tagged <code>highway=steps</code>, marked as stairs;</li>
+    <li>the ways of no known surface within 24 m of those;</li>
+    <li>each line simplified to 1 m, its points in the Hong Kong 1980 Grid (EPSG:2326) in steps of 0.5 m. The GeoJSON gives them in WGS84 to seven decimal places.</li>
+  </ul>
+  <p>135,769 lines: 57,266 of a known surface or stairs and 78,503 of no known surface, with 595,867 points.</p>
+
+  <h2>How it was made</h2>
+  <p>With the tools in Peakline's engine:</p>
+  <pre><code>sh docs/verification/scripts/fetch_osm_ways.sh data/sources/osm/2026-10-06
+hk3d-bake surfaces &lt;dir&gt; --ways data/sources/osm/2026-10-06/ways.geojson
+hk3d-bake pack --levels 5-5 --out surfaces.hk3a &lt;dir&gt;
+hk3d-bake surfaces-geojson surfaces.hk3a --out surfaces.geojson</code></pre>
+  <p>Each way's <code>surface</code> is mapped to the nearest of the ten above. Ways without one are kept only near a way with one, or near stairs. Nothing is added that OpenStreetMap does not hold.</p>
+
+  <h2>The .hk3a format</h2>
+  <p>An archive of cells of 24 × 19.2 km. Each cell is a list of lines, a line written whole into every cell it crosses. A line has a kind byte, its surface in the low seven bits and stairs in the top bit, followed by its points as zigzag variable-length steps of 0.5 m. The GeoJSON holds the same lines, each once.</p>
+</div>
+
+<div class="zh">
+  <h1>路面與樓梯數據，來自 OpenStreetMap</h1>
+  <p class="date">發佈日期：2026 年 10 月 8 日</p>
+
+  <p class="summary">Peakline 內附一個路徑路面及樓梯的數據庫，用於路線高度圖下方的路面資料條。它衍生自 OpenStreetMap，你可在此按《開放數據庫授權協議》免費取得。</p>
+
+  <h2>授權</h2>
+  <p>本數據庫按 <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License 1.0（ODbL）</a> 提供。它衍生自 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>，© OpenStreetMap 貢獻者，亦按同一授權提供。</p>
+  <p>你可按 ODbL 的條款複製、分發及改編本數據庫：須保留本聲明、註明 OpenStreetMap，並將你衍生的數據庫按 ODbL 提供。</p>
+
+  <h2>下載</h2>
+  <ul>
+    <li><a href="surfaces.geojson.gz">surfaces.geojson.gz</a>（4.7 MB，解壓後 30 MB）：WGS84 坐標的 GeoJSON 線條，每條附 <code>surface</code>（路面，或 <code>null</code>）及是否 <code>stairs</code>（樓梯）。</li>
+    <li><a href="surfaces.hk3a">surfaces.hk3a</a>（2.1 MB）：與 App 內附的完全相同。</li>
+    <li><a href="SHA256SUMS">SHA256SUMS</a></li>
+  </ul>
+
+  <h2>內容</h2>
+  <p>取自 Geofabrik 於 2026 年 10 月 5 日的 OpenStreetMap 香港數據：</p>
+  <ul>
+    <li>所有 <code>surface</code> 標籤屬已知路面的路徑，歸入十類之一：瀝青、混凝土、鋪砌、碎石、泥地、草地、沙地、木、已鋪設、未鋪設；</li>
+    <li>所有標記為 <code>highway=steps</code> 的路徑，列為樓梯；</li>
+    <li>上述路徑 24 米範圍內未標路面的路徑；</li>
+    <li>每條線簡化至 1 米，坐標為香港 1980 方格網（EPSG:2326），以 0.5 米為單位；GeoJSON 則以 WGS84 表示，至小數點後七位。</li>
+  </ul>
+  <p>共 135,769 條線：57,266 條屬已知路面或樓梯，78,503 條未知路面，合共 595,867 個點。</p>
+
+  <h2>製作方法</h2>
+  <p>使用 Peakline 引擎的工具，指令見英文版。每條路徑的 <code>surface</code> 會歸入上述十類中最接近的一類；未標路面的路徑只在接近已知路面或樓梯時保留。不會加入任何 OpenStreetMap 沒有的內容。</p>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Peakline · Data © OpenStreetMap contributors, ODbL</span>
+    <nav>
+      <a href="../"><span class="en">Home</span><span class="zh">主頁</span></a>
+      <a href="../privacy/"><span class="en">Privacy</span><span class="zh">私隱政策</span></a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
