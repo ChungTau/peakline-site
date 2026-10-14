@@ -1,45 +1,53 @@
 # Peakline website
 
-The website of [Peakline](https://chungtau.github.io/peakline-site/), a 3D map
-of Hong Kong for iPhone: the landing page, the privacy policy and the terms
-of service, in English and Traditional Chinese.
+The bilingual website for Peakline, the Hong Kong map app for iPhone and
+Android. Static HTML, CSS and JavaScript are served by GitHub Pages from `main`;
+there is no build step or runtime dependency. `.nojekyll` disables Jekyll.
 
-- Plain static HTML and CSS, no build step, served by GitHub Pages from
-  `main`. `.nojekyll` keeps Pages from running Jekyll over it.
-- `index.html` — the landing page; `privacy/` and `terms/` — the legal pages;
-  `404.html`.
-- `assets/js/site.js` — the language switch (the browser's language first,
-  then the visitor's choice, kept in their browser) and the sections fading
-  in as the page scrolls. Without it, the page is whole in English.
-- The landing page opens with a journey played by the scroll, after
-  [asklex.law/journey](https://asklex.law/journey/): a flight from Victoria
-  Harbour at 17:30, up Nathan Road to Lion Rock and the MacLehose Trail, down
-  into Yau Ma Tei at 21:00 and up to the trail under the stars. Each of its
-  451 frames is a still from Peakline's own engine (`hk3d-viewer`), drawn
-  larger than shown and scaled down, in a landscape video
-  (`assets/journey/land.mp4`, 2560×1440) and a portrait one for phones
-  (`port.mp4`, 1152×2304), each with its six chapters' frames as WebP.
-  `tools/journey.py` prints the command for every frame and says how they
-  were encoded. `assets/js/journey.js` pins the stage, reads the video whole
-  and seeks it frame by frame onto a canvas, following the scroll eased so
-  that a wheel's steps glide, and holds each chapter while its words show;
-  until the video arrives, the nearest chapter's frame stands in. With
-  reduced motion it steps from chapter to chapter; without script, the first
-  chapter shows over its frame.
-  iOS reads a video only to play it, so the page plays it once, muted, and
-  pauses; where the phone refuses (saving power), the hint asks for a tap.
-  Add `?debug` to the address to see what the journey does over the page,
-  `?debug&auto` to have it scroll itself through.
-- `assets/img/` — the app's icon at three sizes, the share image, and three
-  screenshots from the iOS simulator.
+## Interaction
 
-The URLs App Store Connect asks for:
+The landing page uses a native video player with playback controls and explicit
+chapter buttons. Scrolling does not seek, play or pause the film, and sections
+stay visible without scroll-triggered animation. There is no canvas, animation
+loop or whole-video fetch into JavaScript memory. Playback starts with the
+visitor; the video uses `preload="none"` and a chapter poster.
 
-| Field | URL |
-|---|---|
-| Marketing URL | https://chungtau.github.io/peakline-site/ |
-| Support URL | https://chungtau.github.io/peakline-site/#support |
-| Privacy Policy URL | https://chungtau.github.io/peakline-site/privacy/ |
+`assets/js/journey.js` connects the chapter buttons and captions to the existing
+film. Chapter selection pauses and seeks when metadata is available. Native
+controls remain usable without JavaScript. `assets/js/site.js` switches English
+and Traditional Chinese and keeps the visitor's language preference locally.
 
-To look at it locally: `python3 -m http.server` here, then
-http://localhost:8000/.
+## Content and assets
+
+- `index.html`: the landing page, current platform/testing availability and
+  the version 1.1 preview.
+- `privacy/`, `terms/`, `404.html`: the policy, terms and not-found page.
+- `assets/journey/land.mp4`: the current flight; chapter posters are under
+  `assets/journey/land/`. The existing portrait assets remain available.
+- `tools/journey.py`: the source camera paths and commands used to render the
+  film with HK3D's engine. The site update reuses those assets.
+- `assets/img/`: app icons, share image and iOS simulator screenshots.
+
+Store availability follows the actual release state: an uploaded/test build is
+not described as a public release. Platform requirements come from the app's
+Xcode and Gradle configuration. The privacy text distinguishes local app
+processing from optional system backups and store services.
+
+## Verify and preview
+
+```sh
+node --check assets/js/site.js
+node --check assets/js/journey.js
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Open `http://127.0.0.1:8000/`. Check desktop and phone layouts, both languages,
+keyboard chapter selection, the first play, paused seeking and native controls.
+Scrolling should leave playback unchanged. With scripting unavailable, the
+native player and page content should remain available.
+
+## Store URLs
+
+- Marketing: https://chungtau.github.io/peakline-site/
+- Support: https://chungtau.github.io/peakline-site/#support
+- Privacy: https://chungtau.github.io/peakline-site/privacy/

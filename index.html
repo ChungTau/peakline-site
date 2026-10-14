@@ -6,7 +6,7 @@
 <title>Peakline — Hong Kong in 3D</title>
 <meta name="title-en" content="Peakline — Hong Kong in 3D">
 <meta name="title-zh" content="Peakline — 全港立體地圖">
-<meta name="description" content="Peakline is a 3D map of all Hong Kong for iPhone. Open your GPX trails, fly them over every hill, street and harbour at any hour, and share the video.">
+<meta name="description" content="Peakline is a 3D map of all Hong Kong for iPhone and Android. Open your GPX trails, fly them over every hill, street and harbour at any hour, and share the video.">
 <meta name="theme-color" content="#14112f">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Peakline — Hong Kong in 3D">
@@ -37,72 +37,86 @@
 
 <main>
 
-<!-- A flight over Hong Kong, drawn frame by frame by Peakline's own engine
-     and played by the scroll (assets/js/journey.js). -->
-<section class="journey" aria-label="A flight over Hong Kong">
-  <div class="stage">
-    <picture>
-      <source media="(max-aspect-ratio: 85/100)" srcset="assets/journey/port/c0.webp">
-      <img class="poster" src="assets/journey/land/c0.webp" alt="" width="2560" height="1440">
-    </picture>
-    <canvas role="img" aria-label="Peakline's 3D map: from Victoria Harbour at dusk, up Nathan Road to Lion Rock and the MacLehose Trail, then Yau Ma Tei with its windows lit at night"></canvas>
-    <div class="shade"></div>
-    <div class="loading"><i></i></div>
-    <div class="topline wrap">
-      <span class="eyebrow"><i></i><span class="en">For iPhone · Coming soon</span><span class="zh">iPhone 版 · 即將推出</span></span>
-      <span class="clock"><span class="en">Hong Kong</span><span class="zh">香港</span><b>17:30</b></span>
-    </div>
-
-    <div class="chapter on">
-      <span class="num">01</span><span class="where"><span class="en">Victoria Harbour</span><span class="zh">維多利亞港</span></span>
-      <h1><span class="en">Hong Kong, <span class="accent">in 3D.</span></span><span class="zh">全港，<span class="accent">立體呈現。</span></span></h1>
-      <p><span class="en">Every hill, street and harbour, drawn on your iPhone. Every frame here is Peakline's own map.</span><span class="zh">每座山、每條街、每個海港，都在你的 iPhone 上立體呈現。這裏的每一格畫面，都出自 Peakline 的地圖。</span></p>
-    </div>
-    <div class="chapter">
-      <span class="num">02</span><span class="where"><span class="en">Nathan Road</span><span class="zh">彌敦道</span></span>
-      <h2><span class="en">Every <span class="accent">street.</span></span><span class="zh">每一條<span class="accent">街。</span></span></h2>
-      <p><span class="en">Buildings, flyovers and the markings on the road, from the Government's own survey.</span><span class="zh">大廈、天橋以至路面標記，全部來自政府的測繪數據。</span></p>
-    </div>
-    <div class="chapter">
-      <span class="num">03</span><span class="where"><span class="en">Lion Rock</span><span class="zh">獅子山</span></span>
-      <h2><span class="en">Every <span class="accent">hill.</span></span><span class="zh">每一座<span class="accent">山。</span></span></h2>
-      <p><span class="en">The real shape of every ridge and valley, from Lantau to Sai Kung, in the light of the hour.</span><span class="zh">由大嶼山到西貢，每道山脊、每個山谷的真實地形，在當刻的光影之下。</span></p>
-    </div>
-    <div class="chapter">
-      <span class="num">04</span><span class="where"><span class="en">MacLehose Trail</span><span class="zh">麥理浩徑</span></span>
-      <h2><span class="en">Your trail, <span class="accent">in its place.</span></span><span class="zh">你的路線，<span class="accent">回到原地。</span></span></h2>
-      <p><span class="en">Open a GPX from any app. Peakline lays it over the hills, with its climb and your checkpoints.</span><span class="zh">從任何 App 打開 GPX，Peakline 把它鋪在山上，連同爬升和你的檢查站。</span></p>
-    </div>
-    <div class="chapter">
-      <span class="num">05</span><span class="where"><span class="en">Yau Ma Tei</span><span class="zh">油麻地</span></span>
-      <h2><span class="en">Then the city <span class="accent">lights up.</span></span><span class="zh">然後，城市<span class="accent">亮起來。</span></span></h2>
-      <p><span class="en">Choose any hour. After sunset, windows light up one by one, each building on its own hours, under the real stars.</span><span class="zh">隨意選擇時間。日落之後，窗戶逐一亮起，每幢大廈各有作息，頭上是真實的星空。</span></p>
-    </div>
-    <div class="chapter">
-      <span class="num">06</span><span class="where"><span class="en">Lion Rock, at night</span><span class="zh">夜幕下的獅子山</span></span>
-      <h2><span class="en">Fly it. <span class="accent">Share it.</span></span><span class="zh">飛越它，<span class="accent">分享它。</span></span></h2>
-      <p><span class="en">Turn your trail into a flight over Hong Kong, at golden hour or under the stars, and share the video.</span><span class="zh">把你的路線變成一段飛越香港的影片，黃昏或星空下都可以，再分享出去。</span></p>
+<!-- A user-controlled film: playback and chapter selection are independent of scrolling. -->
+<section class="journey" aria-labelledby="journey-title">
+  <div class="wrap journey-grid">
+    <div class="journey-intro">
+      <span class="eyebrow"><span class="en">iPhone &amp; Android · In testing</span><span class="zh">iPhone 及 Android · 測試中</span></span>
+      <h1 id="journey-title"><span class="en">Your route.<br>Hong Kong <em>in 3D.</em></span><span class="zh">你的路線，<br><em>立體香港。</em></span></h1>
+      <p class="section-lead"><span class="en">Explore the city and its hills, relive a GPX trail, and turn the journey into a film. You choose when to fly.</span><span class="zh">探索城市與山野，重溫 GPX 路線，把旅程製成影片。何時起飛，由你決定。</span></p>
       <div class="ctas">
-        <span class="btn primary" aria-disabled="true">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
-          <span class="en">Coming to the App Store</span><span class="zh">即將登陸 App Store</span>
-        </span>
-        <a class="btn ghost" href="#map"><span class="en">See what it does</span><span class="zh">了解更多</span></a>
+        <a class="btn primary" href="#video"><span class="en">Make your route a film</span><span class="zh">把路線製成影片</span></a>
+        <a class="btn ghost" href="#map"><span class="en">Explore the map</span><span class="zh">認識地圖</span></a>
       </div>
-      <p class="soon"><span class="en">Free to explore. iPhone with iOS 26 or later.</span><span class="zh">免費探索地圖。需要 iOS 26 或以上的 iPhone。</span></p>
+      <p class="availability"><span class="en">iPhone with iOS 26 or later · Android 10 or later.<br>Store availability will be announced here.</span><span class="zh">需要 iOS 26 或以上的 iPhone，或 Android 10 或以上裝置。<br>正式上架消息將在此公布。</span></p>
     </div>
+    <div class="journey-player">
+      <div class="film-frame">
+        <video id="journey-video" controls playsinline preload="none" poster="assets/journey/land/c0.webp" aria-label="A flight over Hong Kong in Peakline">
+          <source src="assets/journey/land.mp4" type="video/mp4">
+          <a href="assets/journey/land.mp4">Watch the flight / 觀看飛行影片</a>
+        </video>
+      </div>
+      <div class="film-toolbar">
+        <button class="film-play" type="button" hidden>
+          <span class="play-label"><span class="en">Play flight</span><span class="zh">播放飛行</span></span>
+          <span class="pause-label"><span class="en">Pause</span><span class="zh">暫停</span></span>
+        </button>
+        <span class="film-note"><span class="en">Choose a scene, or watch the whole flight.</span><span class="zh">選擇場景，或播放整段飛行。</span></span>
+      </div>
+      <nav class="chapters" aria-label="Flight chapters">
+        <button type="button" data-chapter="0" aria-controls="journey-video" aria-pressed="true" disabled><span class="en">Harbour</span><span class="zh">海港</span></button>
+        <button type="button" data-chapter="1" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Streets</span><span class="zh">街道</span></button>
+        <button type="button" data-chapter="2" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Hills</span><span class="zh">山嶺</span></button>
+        <button type="button" data-chapter="3" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Trail</span><span class="zh">路線</span></button>
+        <button type="button" data-chapter="4" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Night</span><span class="zh">入夜</span></button>
+        <button type="button" data-chapter="5" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Film</span><span class="zh">影片</span></button>
+      </nav>
+      <div class="chapter-copy" aria-live="polite" aria-atomic="true">
+        <article class="chapter" data-scene="0">
+          <p class="where"><span class="en">Victoria Harbour</span><span class="zh">維多利亞港</span></p>
+          <h2><span class="en">The city, in its place.</span><span class="zh">城市，立體呈現。</span></h2>
+          <p><span class="en">Explore Hong Kong in Peakline’s own 3D map. Every frame of this flight comes from the app’s engine.</span><span class="zh">在 Peakline 的立體地圖探索香港。這段飛行的每一格畫面，都來自 App 自己的引擎。</span></p>
+        </article>
+        <article class="chapter" data-scene="1" hidden>
+          <p class="where"><span class="en">Nathan Road</span><span class="zh">彌敦道</span></p>
+          <h2><span class="en">Down to the street.</span><span class="zh">走進街道。</span></h2>
+          <p><span class="en">Buildings, flyovers and road detail, drawn from government survey data.</span><span class="zh">以政府測繪數據呈現大廈、天橋與道路細節。</span></p>
+        </article>
+        <article class="chapter" data-scene="2" hidden>
+          <p class="where"><span class="en">Lion Rock</span><span class="zh">獅子山</span></p>
+          <h2><span class="en">Follow the ridgeline.</span><span class="zh">沿著山脊。</span></h2>
+          <p><span class="en">See the shape of the hills in the light of the hour.</span><span class="zh">在當刻的光影之下，看清山巒地形。</span></p>
+        </article>
+        <article class="chapter" data-scene="3" hidden>
+          <p class="where"><span class="en">MacLehose Trail</span><span class="zh">麥理浩徑</span></p>
+          <h2><span class="en">Bring your trail.</span><span class="zh">帶上你的路線。</span></h2>
+          <p><span class="en">Open a GPX route, add checkpoints and explore its distance, elevation and ground information.</span><span class="zh">開啟 GPX 路線，加入檢查站，查看距離、高度與路面資訊。</span></p>
+        </article>
+        <article class="chapter" data-scene="4" hidden>
+          <p class="where"><span class="en">Yau Ma Tei</span><span class="zh">油麻地</span></p>
+          <h2><span class="en">Stay after dark.</span><span class="zh">留到入夜。</span></h2>
+          <p><span class="en">Windows light up, street lights glow, and the real stars come out.</span><span class="zh">窗戶亮起、街燈發光，真實星空隨之出現。</span></p>
+        </article>
+        <article class="chapter" data-scene="5" hidden>
+          <p class="where"><span class="en">Lion Rock at night</span><span class="zh">夜幕下的獅子山</span></p>
+          <h2><span class="en">Make it a film.</span><span class="zh">把它拍成影片。</span></h2>
+          <p><span class="en">Choose the camera, pace and sunlight, preview your route, then make a video to share.</span><span class="zh">選擇鏡頭、速度和光線，預覽路線，再製作影片分享。</span></p>
+        </article>
+      </div>
+      <p class="film-error" role="status" hidden><span class="en">Use the video player’s controls to start the flight.</span><span class="zh">請使用影片播放器的控制項開始播放。</span></p>
+    </div>
+  </div>
+</section>
 
-    <nav class="dots" aria-label="Chapters">
-      <button type="button"><span><span class="en">Harbour</span><span class="zh">海港</span></span><i></i></button>
-      <button type="button"><span><span class="en">Streets</span><span class="zh">街道</span></span><i></i></button>
-      <button type="button"><span><span class="en">Hills</span><span class="zh">山嶺</span></span><i></i></button>
-      <button type="button"><span><span class="en">Trail</span><span class="zh">路線</span></span><i></i></button>
-      <button type="button"><span><span class="en">Night</span><span class="zh">入夜</span></span><i></i></button>
-      <button type="button"><span><span class="en">Share</span><span class="zh">分享</span></span><i></i></button>
-    </nav>
-    <div class="hint">
-      <span class="scroll"><span class="en">Scroll to fly</span><span class="zh">向下捲動，起飛</span></span>
-      <span class="tap"><span class="en">Tap to play the flight, then scroll</span><span class="zh">輕觸一下播放飛行，再向下捲動</span></span>
+<section id="latest" class="latest">
+  <div class="wrap">
+    <span class="kicker"><span class="en">Version 1.1 preview</span><span class="zh">1.1 版本預覽</span></span>
+    <h2><span class="en">More room to create.</span><span class="zh">更充裕的創作空間。</span></h2>
+    <div class="cards">
+      <div class="card"><h3><span class="en">A clearer video studio</span><span class="zh">更清晰的影片編輯器</span></h3><p><span class="en">On iPhone, a fullscreen landscape preview sits beside Picture, Camera and Light settings. Android also adapts its studio to landscape.</span><span class="zh">iPhone 橫向全螢幕預覽，與畫面、鏡頭、光線設定並排顯示。Android 的編輯器亦會配合橫向版面。</span></p></div>
+      <div class="card"><h3><span class="en">Choose your pace</span><span class="zh">自由選擇節奏</span></h3><p><span class="en">More flexible filming speeds for close-up views, with the preview and export following the same setting.</span><span class="zh">近鏡製片速度更有彈性，預覽與輸出採用一致設定。</span></p></div>
+      <div class="card"><h3><span class="en">Keep your place</span><span class="zh">掌握進度</span></h3><p><span class="en">The map preloads ahead of route movement. On iPhone, video progress leaves Settings accessible even after the sheets close.</span><span class="zh">地圖會隨路線移動提前預載。iPhone 關閉面板後，製片進度亦會避開設定按鈕。</span></p></div>
     </div>
   </div>
 </section>
@@ -110,12 +124,12 @@
 <section id="map">
   <div class="wrap">
     <div class="split">
-      <div class="reveal">
+      <div>
         <span class="kicker"><span class="en">The map</span><span class="zh">地圖</span></span>
         <h2><span class="en">Every hill.<br>Every street.</span><span class="zh">每座山。<br>每條街。</span></h2>
         <p class="section-lead">
-          <span class="en">A clean, stylised 3D model of the whole territory, from the Government's own survey data: buildings, flyovers, terrain, roads and their markings. Smooth to pan, turn and tilt.</span>
-          <span class="zh">以政府測繪數據建成、簡潔立體的全港模型：大廈、天橋、地形、道路以至路面標記。平移、旋轉、傾斜都流暢自如。</span>
+          <span class="en">A clean, stylised 3D model of the whole territory, from the Government's own survey data: buildings, flyovers, terrain, roads and their markings. Explore by panning, turning and tilting.</span>
+          <span class="zh">以政府測繪數據建成、簡潔立體的全港模型：大廈、天橋、地形、道路以至路面標記。以平移、旋轉和傾斜探索地圖。</span>
         </p>
         <ul class="points">
           <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 20l5-11 4 7 3-5 6 9z"/><path d="M3 20h18"/></svg></span>
@@ -126,10 +140,10 @@
             <p><span class="en">The real sun and shadows for any moment, haze by the season, and the sky as it is.</span><span class="zh">任何時刻的真實日照與陰影、隨季節變化的煙霞，以及真實的天空。</span></p></div></li>
           <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
             <div><h3><span class="en">Where you are</span><span class="zh">你在哪裏</span></h3>
-            <p><span class="en">Your place on the map, the way you face, and how sure the fix is. Only on your iPhone.</span><span class="zh">你在地圖上的位置、面向和定位準確度，只在你的 iPhone 上使用。</span></p></div></li>
+            <p><span class="en">Your place on the map, the way you face, and how sure the fix is. Used on your device.</span><span class="zh">你在地圖上的位置、面向和定位準確度，只在你的裝置上使用。</span></p></div></li>
         </ul>
       </div>
-      <div class="phone-col reveal"><div class="phone"><img src="assets/img/shot-route.jpg" alt="A trail over the Lion Rock ridge with its elevation" loading="lazy" width="1206" height="2622"></div></div>
+      <div class="phone-col"><div class="phone"><img src="assets/img/shot-route.jpg" alt="A trail over the Lion Rock ridge with its elevation" loading="lazy" width="1206" height="2622"></div></div>
     </div>
   </div>
 </section>
@@ -137,7 +151,7 @@
 <section class="night">
   <div class="wrap">
     <div class="split flip">
-      <div class="reveal">
+      <div>
         <span class="kicker"><span class="en">After dark</span><span class="zh">入夜之後</span></span>
         <h2><span class="en">The city lights up.</span><span class="zh">城市亮起來。</span></h2>
         <p class="section-lead">
@@ -151,14 +165,14 @@
             <h3><span class="en">Real stars</span><span class="zh">真實星空</span></h3><p><span class="en">Thousands of stars and five planets.</span><span class="zh">數千顆恆星與五大行星。</span></p></div>
         </div>
       </div>
-      <div class="phone-col reveal"><div class="phone"><img src="assets/img/shot-night.jpg" alt="Tsim Sha Tsui at night, windows lit" loading="lazy" width="1206" height="2622"></div></div>
+      <div class="phone-col"><div class="phone"><img src="assets/img/shot-night.jpg" alt="Tsim Sha Tsui at night, windows lit" loading="lazy" width="1206" height="2622"></div></div>
     </div>
   </div>
 </section>
 
 <section id="trails">
   <div class="wrap">
-    <div class="reveal" style="text-align:center">
+    <div style="text-align:center">
       <span class="kicker"><span class="en">Trails</span><span class="zh">路線</span></span>
       <h2><span class="en">Your trail, in its place.</span><span class="zh">你的路線，回到原地。</span></h2>
       <p class="section-lead" style="margin:0 auto">
@@ -166,9 +180,9 @@
         <span class="zh">打開任何 GPX 檔案，無論來自手錶、比賽還是朋友的 WhatsApp，都會鋪在它攀越的山上。</span>
       </p>
     </div>
-    <div class="cards reveal">
+    <div class="cards">
       <div class="card"><span class="ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M8 15l3-3 2 2 3-4"/></svg></span>
-        <h3><span class="en">Open from any app</span><span class="zh">任何 App 都可打開</span></h3>
+        <h3><span class="en">Open from another app</span><span class="zh">任何 App 都可打開</span></h3>
         <p><span class="en">Share a GPX to Peakline and it's there, kept once, ready to play.</span><span class="zh">把 GPX 分享到 Peakline 就會出現，不會重複儲存，隨時播放。</span></p></div>
       <div class="card"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 4 4 5-9 4 13z"/></svg></span>
         <h3><span class="en">Elevation and what's underfoot</span><span class="zh">高度與腳下路面</span></h3>
@@ -183,7 +197,7 @@
 <section id="video" class="video">
   <div class="wrap">
     <div class="split">
-      <div class="reveal">
+      <div>
         <span class="kicker"><span class="en">Video</span><span class="zh">影片</span></span>
         <h2><span class="en">Fly it.<br>Share it.</span><span class="zh">飛越它。<br>分享它。</span></h2>
         <p class="section-lead">
@@ -204,18 +218,18 @@
             <span><span class="en">Unlimited HD videos, no watermark. Or buy a single video, or a pass for a day or three.</span><span class="zh">無限高清影片，沒有水印。亦可單次購買一條影片，或購買一日、三日通行證。</span></span></div>
         </div>
       </div>
-      <div class="phone-col reveal"><div class="phone"><img src="assets/img/shot-studio.jpg" alt="Making a video of the trail in Peakline" loading="lazy" width="1206" height="2622"></div></div>
+      <div class="phone-col"><div class="phone"><img src="assets/img/shot-studio.jpg" alt="Making a video of the trail in Peakline" loading="lazy" width="1206" height="2622"></div></div>
     </div>
   </div>
 </section>
 
 <section class="private">
-  <div class="wrap reveal">
+  <div class="wrap">
     <span class="kicker"><span class="en">Privacy</span><span class="zh">私隱</span></span>
     <h2><span class="en">Yours, and only yours.</span><span class="zh">只屬於你。</span></h2>
     <p class="section-lead">
-      <span class="en">No account to make. No ads, no analytics, no tracking. Your routes, your location and your videos stay on your iPhone.</span>
-      <span class="zh">不用註冊帳戶。沒有廣告、沒有分析工具、沒有追蹤。你的路線、位置和影片都留在你的 iPhone 上。</span>
+      <span class="en">No account to make. No ads, no analytics, no tracking. Routes and videos are processed on your device; sharing and system backups are your choice.</span>
+      <span class="zh">不用註冊帳戶。沒有廣告、沒有分析工具、沒有追蹤。路線及影片在裝置上處理，分享與系統備份由你選擇。</span>
     </p>
     <div class="badges">
       <span class="badge"><span class="en">No account</span><span class="zh">無需帳戶</span></span>
@@ -228,26 +242,26 @@
 
 <section id="faq">
   <div class="wrap">
-    <div class="reveal" style="text-align:center">
+    <div style="text-align:center">
       <h2><span class="en">Questions</span><span class="zh">常見問題</span></h2>
     </div>
-    <div class="faq reveal">
+    <div class="faq">
       <details><summary><span class="en">Does it work without a connection?</span><span class="zh">沒有網絡可以用嗎？</span></summary>
-        <p><span class="en">Yes. The map is on your iPhone: Yau Tsim Mong comes with the app, and the detailed map of all Hong Kong is a one-time download. Your location comes from GPS.</span><span class="zh">可以。地圖儲存在你的 iPhone 上：油尖旺隨 App 附送，全港詳細地圖只需下載一次。位置來自 GPS。</span></p></details>
+        <p><span class="en">Yes. The map is on your device: Yau Tsim Mong comes with the app, and the detailed map of all Hong Kong is a one-time download. Your location comes from GPS.</span><span class="zh">可以。地圖儲存在你的裝置上：油尖旺隨 App 附送，全港詳細地圖只需下載一次。位置來自 GPS。</span></p></details>
       <details><summary><span class="en">Can I use it to navigate on the hills?</span><span class="zh">可以用來在山上導航嗎？</span></summary>
         <p><span class="en">Peakline is for planning, reliving and sharing. Map data can be out of date, so don't rely on it alone where your safety depends on it: check the weather, carry a proper map and tell someone your route.</span><span class="zh">Peakline 用於規劃、重溫和分享。地圖資料可能過時，在涉及安全的情況下切勿只依賴它：出發前留意天氣、帶備地圖，並告訴別人你的路線。</span></p></details>
       <details><summary><span class="en">Where does the map come from?</span><span class="zh">地圖資料從哪裏來？</span></summary>
         <p><span class="en">Buildings, terrain and roads come from the HKSAR Government's open data (Lands Department, through the CSDI Portal and DATA.GOV.HK); paths' surfaces and steps from OpenStreetMap contributors. The full credits are in the app.</span><span class="zh">大廈、地形和道路來自香港特區政府的開放數據（地政總署，經空間數據共享平台及資料一線通）；路面及樓梯資料來自 OpenStreetMap 貢獻者。完整鳴謝見 App 內。</span></p></details>
       <details><summary><span class="en">Do I need an account? How do purchases work?</span><span class="zh">需要帳戶嗎？購買如何運作？</span></summary>
-        <p><span class="en">No account. Purchases go through the App Store and stay with your Apple ID: restore them in Settings on a new iPhone. Pro renews until you cancel it in your App Store subscriptions.</span><span class="zh">不需要帳戶。購買經 App Store 進行並跟隨你的 Apple ID，換新 iPhone 時可在設定中恢復購買。Pro 會自動續期，直至你在 App Store 訂閱中取消。</span></p></details>
+        <p><span class="en">No account. Available purchases use your platform’s store account: App Store on iPhone or Google Play on Android. Restore eligible purchases in Settings using the same store account. Manage renewals in that store’s subscriptions settings.</span><span class="zh">不需要帳戶。可購買項目經所用平台的商店帳戶處理：iPhone 使用 App Store，Android 使用 Google Play。以同一商店帳戶登入後，可在設定中恢復合資格購買；續期請在該商店的訂閱設定管理。</span></p></details>
       <details><summary><span class="en">Is there an Android version?</span><span class="zh">有 Android 版嗎？</span></summary>
-        <p><span class="en">Peakline starts on iPhone.</span><span class="zh">Peakline 先推出 iPhone 版。</span></p></details>
+        <p><span class="en">Yes. The Android app is in testing through Google Play; the iPhone app is awaiting App Store review. Public availability will be announced here.</span><span class="zh">有。Android App 正透過 Google Play 測試；iPhone App 正等待 App Store 審核。正式上架消息將在此公布。</span></p></details>
     </div>
   </div>
 </section>
 
 <section id="support" class="support">
-  <div class="wrap reveal">
+  <div class="wrap">
     <h2><span class="en">Need a hand?</span><span class="zh">需要協助？</span></h2>
     <p class="section-lead" style="margin:0 auto">
       <span class="en">Questions, bugs or ideas for Peakline: tell us, and we'll get back to you.</span>

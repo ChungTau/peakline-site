@@ -1,6 +1,5 @@
 // Peakline's website: English or Traditional Chinese, as the visitor's
-// browser prefers or as they choose (kept in this browser only), and the
-// sections fading in as the page scrolls.
+// browser prefers or as they choose (kept in this browser only).
 
 (function () {
   var root = document.documentElement;
@@ -35,19 +34,5 @@
       });
     }
 
-    var reveals = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      reveals.forEach(function (el) { el.classList.add("shown"); });
-      return;
-    }
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("shown");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.01, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { observer.observe(el); });
   });
 })();
