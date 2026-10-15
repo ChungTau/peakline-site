@@ -47,21 +47,19 @@ native player and page content should remain available.
 - Support: https://chungtau.github.io/peakline-site/#support
 - Privacy: https://chungtau.github.io/peakline-site/privacy/
 
-## Landscape flight with the current map
+## FPV motion preview
 
-The hero is a low virtual flight along a road between buildings, first by day
-and then at night, with simulated traffic. It uses the latest full map pack.
-Chapter selection and playback remain independent of scrolling. App Store
-phone captures are separate assets.
+The hero currently publishes the owner's requested motion preview: Hong Kong
+Island hills, Victoria Harbour, a low road between Kowloon's buildings, then a
+climb over Lion Rock to reveal the route. It uses the latest full map inputs and
+simulated traffic. This is virtual footage, with image-plane banking added in
+encoding. The preview has lower resolution and frame rate than final media.
 
-`tools/street-flight.py` prints shell-quoted viewer commands. Supply the current
-app's bundled packs first (including Yau Tsim Mong's shared prototypes and
-façades), then the full territory pack and the traffic network. The viewer's
-`--traffic-camera` keeps a stable population while its clock advances. The
-camera follows a straight road interior and rises gently at the night ending.
-Vehicle positions are simulated, not real-time traffic observations.
+The published movie is `assets/journey/fpv-preview.mp4`; chapter posters under
+`assets/journey/fpv/` are extracted from that exact encoded movie. Playback and
+chapter selection remain independent of scrolling. App Store phone recordings
+are separate assets. The engine workspace's `target/launch-2026-10-15/fpv/`
+contains the working recipe, source frames, render logs and encoder.
 
-The engine repository's launch verification records input hashes and render
-logs. Source frames stay outside Git; the video and chapter posters are in
-`assets/journey/`. `tools/journey.py` retains the earlier wide aerial route as a
-reference; it is not the current hero's generation command.
+`tools/journey.py` and `tools/street-flight.py` retain the prior wide aerial and
+street-only recipes as references; neither generates this FPV preview.

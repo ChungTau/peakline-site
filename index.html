@@ -52,9 +52,9 @@
     </div>
     <div class="journey-player">
       <div class="film-frame">
-        <video id="journey-video" controls playsinline preload="none" poster="assets/journey/land/c0.webp" aria-label="A virtual street-level drone flight in Peakline">
-          <source src="assets/journey/land.mp4" type="video/mp4">
-          <a href="assets/journey/land.mp4">Watch the flight / 觀看飛行影片</a>
+        <video id="journey-video" controls playsinline preload="none" poster="assets/journey/fpv/c0.webp" aria-label="An FPV-style virtual flight from Hong Kong Island to Lion Rock">
+          <source src="assets/journey/fpv-preview.mp4" type="video/mp4">
+          <a href="assets/journey/fpv-preview.mp4">Watch the flight / 觀看飛行影片</a>
         </video>
       </div>
       <div class="film-toolbar">
@@ -62,23 +62,23 @@
           <span class="play-label"><span class="en">Play flight</span><span class="zh">播放飛行</span></span>
           <span class="pause-label"><span class="en">Pause</span><span class="zh">暫停</span></span>
         </button>
-        <span class="film-note"><span class="en">Choose a scene, or watch the whole flight.</span><span class="zh">選擇場景，或播放整段飛行。</span></span>
+        <span class="film-note"><span class="en">FPV motion preview · Choose a scene or watch the whole flight.</span><span class="zh">FPV 運鏡預覽 · 選擇場景，或播放整段飛行。</span></span>
       </div>
       <nav class="chapters" aria-label="Flight chapters">
-<button type="button" data-chapter="0" aria-controls="journey-video" aria-pressed="true" disabled><span class="en">Enter</span><span class="zh">進入街道</span></button>
-<button type="button" data-chapter="1" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Street</span><span class="zh">穿越</span></button>
-<button type="button" data-chapter="2" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Junction</span><span class="zh">路口</span></button>
-<button type="button" data-chapter="3" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Night</span><span class="zh">入夜</span></button>
-<button type="button" data-chapter="4" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Traffic</span><span class="zh">車流</span></button>
-<button type="button" data-chapter="5" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Rise</span><span class="zh">升起</span></button>
+<button type="button" data-chapter="0" aria-controls="journey-video" aria-pressed="true" disabled><span class="en">Island</span><span class="zh">港島起飛</span></button>
+<button type="button" data-chapter="1" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Harbour</span><span class="zh">飛越維港</span></button>
+<button type="button" data-chapter="2" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Street</span><span class="zh">街道穿越</span></button>
+<button type="button" data-chapter="3" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Climb</span><span class="zh">拉升</span></button>
+<button type="button" data-chapter="4" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Lion Rock</span><span class="zh">翻越獅子山</span></button>
+<button type="button" data-chapter="5" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Route</span><span class="zh">路線展現</span></button>
 </nav>
       <div class="chapter-copy" aria-live="polite" aria-atomic="true">
-<article class="chapter" data-scene="0"><p class="where"><span class="en">Yau Ma Tei</span><span class="zh">油麻地</span></p><h2><span class="en">Between the buildings.</span><span class="zh">穿越大廈之間。</span></h2><p><span class="en">A low virtual flight along the road, rendered with the latest map pack.</span><span class="zh">用最新地圖包重新渲染，沿車路低空穿越。</span></p></article>
-<article class="chapter" data-scene="1" hidden><p class="where"><span class="en">Along the road</span><span class="zh">沿著車路</span></p><h2><span class="en">The city moves around you.</span><span class="zh">城市，在身旁掠過。</span></h2><p><span class="en">Building façades and road details pass on both sides as the camera travels forward.</span><span class="zh">鏡頭向前，兩旁大廈貼圖與道路細節在身邊掠過。</span></p></article>
-<article class="chapter" data-scene="2" hidden><p class="where"><span class="en">At the junction</span><span class="zh">來到路口</span></p><h2><span class="en">Keep the road in view.</span><span class="zh">沿著道路，繼續向前。</span></h2><p><span class="en">The camera stays over the road instead of cutting through buildings.</span><span class="zh">鏡頭沿道路上空行駛，帶出街道之間的空間。</span></p></article>
-<article class="chapter" data-scene="3" hidden><p class="where"><span class="en">Yau Ma Tei after dark</span><span class="zh">入夜的油麻地</span></p><h2><span class="en">The same street, after dark.</span><span class="zh">同一條街，換上夜色。</span></h2><p><span class="en">Window lights and street lights reveal another side of the city.</span><span class="zh">窗燈與街燈亮起，展現城市的另一面。</span></p></article>
-<article class="chapter" data-scene="4" hidden><p class="where"><span class="en">Simulated traffic</span><span class="zh">模擬車流</span></p><h2><span class="en">A little life in the streets.</span><span class="zh">讓街道，多一點生命。</span></h2><p><span class="en">Vehicles follow the road network. This is simulated traffic, not live traffic data.</span><span class="zh">車輛沿路網行駛。這是模擬車流，並非即時交通數據。</span></p></article>
-<article class="chapter" data-scene="5" hidden><p class="where"><span class="en">Above the street</span><span class="zh">街道上方</span></p><h2><span class="en">Lift your perspective.</span><span class="zh">慢慢升起，換個角度。</span></h2><p><span class="en">The camera gently rises while keeping the street and its buildings in view.</span><span class="zh">鏡頭緩緩升高，仍然保留街道與兩旁建築。</span></p></article>
+<article class="chapter" data-scene="0"><p class="where"><span class="en">Hong Kong Island</span><span class="zh">港島山上</span></p><h2><span class="en">From the hills to the harbour.</span><span class="zh">由山上，飛向維港。</span></h2><p><span class="en">Begin above Hong Kong Island, using the latest map pack.</span><span class="zh">用最新地圖包，由港島山上展開旅程。</span></p></article>
+<article class="chapter" data-scene="1" hidden><p class="where"><span class="en">Victoria Harbour</span><span class="zh">維多利亞港</span></p><h2><span class="en">Across the water.</span><span class="zh">飛越維港。</span></h2><p><span class="en">Descend towards the Kowloon peninsula.</span><span class="zh">向九龍半島飛去，逐步降低高度。</span></p></article>
+<article class="chapter" data-scene="2" hidden><p class="where"><span class="en">Kowloon</span><span class="zh">九龍街道</span></p><h2><span class="en">Between the buildings.</span><span class="zh">穿越大廈之間。</span></h2><p><span class="en">Fly low along the road with simulated traffic.</span><span class="zh">沿車路低飛，穿過兩旁建築與模擬車流。</span></p></article>
+<article class="chapter" data-scene="3" hidden><p class="where"><span class="en">Above Kowloon</span><span class="zh">九龍上空</span></p><h2><span class="en">Rise above the rooftops.</span><span class="zh">越過樓頂，向山進發。</span></h2><p><span class="en">Climb out of the street and head towards the hills.</span><span class="zh">離開街道，拉升飛往山區。</span></p></article>
+<article class="chapter" data-scene="4" hidden><p class="where"><span class="en">Lion Rock</span><span class="zh">獅子山</span></p><h2><span class="en">Over the ridge.</span><span class="zh">翻越山脊。</span></h2><p><span class="en">Continue over Lion Rock as the route comes into view.</span><span class="zh">飛越獅子山，逐步展現路線。</span></p></article>
+<article class="chapter" data-scene="5" hidden><p class="where"><span class="en">Your trail</span><span class="zh">你的路線</span></p><h2><span class="en">See the journey ahead.</span><span class="zh">看見整段旅程。</span></h2><p><span class="en">Bank around the ridge to reveal the trail across the mountain.</span><span class="zh">繞過山脊，帶出山上的路線。</span></p></article>
 </div>
       <p class="film-error" role="status" hidden><span class="en">Use the video player’s controls to start the flight.</span><span class="zh">請使用影片播放器的控制項開始播放。</span></p>
     </div>

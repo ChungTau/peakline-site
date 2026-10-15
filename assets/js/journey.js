@@ -8,8 +8,8 @@
   var error = section.querySelector('.film-error');
   var buttons = Array.from(section.querySelectorAll('[data-chapter]'));
   var chapters = Array.from(section.querySelectorAll('[data-scene]'));
-  // Street-flight chapter times (tools/street-flight.py).
-  var times = [0, 4, 8, 12, 16, 20];
+  // Chapters in the published FPV motion preview.
+  var times = [0, 5, 13, 20, 30, 35];
   var pending = null;
   var current = 0;
 
@@ -29,7 +29,7 @@
     button.addEventListener('click', function () {
       video.pause();
       show(index);
-      video.poster = 'assets/journey/land/c' + index + '.webp';
+      video.poster = 'assets/journey/fpv/c' + index + '.webp';
       pending = times[index];
       if (video.readyState >= 1) seek();
       else video.load();
