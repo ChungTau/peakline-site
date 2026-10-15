@@ -199,9 +199,7 @@ footer a { color: var(--ink-soft); }
 .doc ul { padding-left: 22px; }
 .doc .summary { border-left: 4px solid var(--orange); padding: 6px 0 6px 18px; color: var(--ink); font-weight: 600; font-size: 18px; margin: 26px 0; }
 
-/* Fresh release captures retain their full phone aspect ratio. */
-.fresh-preview { max-width: 320px; margin: 0 auto; }
-.fresh-preview video { aspect-ratio: 886 / 1920; }
+/* Fresh release screenshots. */
 .launch-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-block: 32px; }
 .launch-gallery figure { margin: 0; }
 .launch-gallery img { width: 100%; height: auto; border-radius: 20px; display: block; }

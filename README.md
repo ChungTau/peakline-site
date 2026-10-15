@@ -46,3 +46,22 @@ native player and page content should remain available.
 - Marketing: https://chungtau.github.io/peakline-site/
 - Support: https://chungtau.github.io/peakline-site/#support
 - Privacy: https://chungtau.github.io/peakline-site/privacy/
+
+## Landscape flight with the current map
+
+The hero is a low virtual flight along a road between buildings, first by day
+and then at night, with simulated traffic. It uses the latest full map pack.
+Chapter selection and playback remain independent of scrolling. App Store
+phone captures are separate assets.
+
+`tools/street-flight.py` prints shell-quoted viewer commands. Supply the current
+app's bundled packs first (including Yau Tsim Mong's shared prototypes and
+façades), then the full territory pack and the traffic network. The viewer's
+`--traffic-camera` keeps a stable population while its clock advances. The
+camera follows a straight road interior and rises gently at the night ending.
+Vehicle positions are simulated, not real-time traffic observations.
+
+The engine repository's launch verification records input hashes and render
+logs. Source frames stay outside Git; the video and chapter posters are in
+`assets/journey/`. `tools/journey.py` retains the earlier wide aerial route as a
+reference; it is not the current hero's generation command.

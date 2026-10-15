@@ -8,8 +8,8 @@
   var error = section.querySelector('.film-error');
   var buttons = Array.from(section.querySelectorAll('[data-chapter]'));
   var chapters = Array.from(section.querySelectorAll('[data-scene]'));
-  // The existing film's chapter frames, at 30 fps (tools/journey.py).
-  var times = [0, 3, 6, 9, 12, 15];
+  // Street-flight chapter times (tools/street-flight.py).
+  var times = [0, 4, 8, 12, 16, 20];
   var pending = null;
   var current = 0;
 

@@ -18,6 +18,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <script src="assets/js/site.js"></script>
+<script src="assets/js/journey.js" defer></script>
 </head>
 <body>
 
@@ -50,13 +51,36 @@
       <p class="availability"><span class="en">iPhone with iOS 26 or later · Android 10 or later.<br>iPhone version 1.0 is available now. Android is a closed test.</span><span class="zh">需要 iOS 26 或以上的 iPhone，或 Android 10 或以上裝置。<br>iPhone 1.0 現已上架；Android 現正招募封測用家。</span></p>
     </div>
     <div class="journey-player">
-      <div class="film-frame fresh-preview">
-        <video controls playsinline preload="none" poster="assets/launch/route.webp" aria-label="Peakline 1.1 route playback preview">
-          <source src="assets/launch/route-preview.mp4" type="video/mp4">
-          <a href="assets/launch/route-preview.mp4">Watch the route / 觀看路線</a>
+      <div class="film-frame">
+        <video id="journey-video" controls playsinline preload="none" poster="assets/journey/land/c0.webp" aria-label="A virtual street-level drone flight in Peakline">
+          <source src="assets/journey/land.mp4" type="video/mp4">
+          <a href="assets/journey/land.mp4">Watch the flight / 觀看飛行影片</a>
         </video>
       </div>
-      <p class="film-note"><span class="en">Fresh capture from the upcoming iPhone 1.1 version. Recorded in the simulator; playback is user-controlled.</span><span class="zh">重新拍攝的 iPhone 1.1 預覽畫面，來自模擬器實際操作。影片由你按播放。</span></p>
+      <div class="film-toolbar">
+        <button class="film-play" type="button" hidden>
+          <span class="play-label"><span class="en">Play flight</span><span class="zh">播放飛行</span></span>
+          <span class="pause-label"><span class="en">Pause</span><span class="zh">暫停</span></span>
+        </button>
+        <span class="film-note"><span class="en">Choose a scene, or watch the whole flight.</span><span class="zh">選擇場景，或播放整段飛行。</span></span>
+      </div>
+      <nav class="chapters" aria-label="Flight chapters">
+<button type="button" data-chapter="0" aria-controls="journey-video" aria-pressed="true" disabled><span class="en">Enter</span><span class="zh">進入街道</span></button>
+<button type="button" data-chapter="1" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Street</span><span class="zh">穿越</span></button>
+<button type="button" data-chapter="2" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Junction</span><span class="zh">路口</span></button>
+<button type="button" data-chapter="3" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Night</span><span class="zh">入夜</span></button>
+<button type="button" data-chapter="4" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Traffic</span><span class="zh">車流</span></button>
+<button type="button" data-chapter="5" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Rise</span><span class="zh">升起</span></button>
+</nav>
+      <div class="chapter-copy" aria-live="polite" aria-atomic="true">
+<article class="chapter" data-scene="0"><p class="where"><span class="en">Yau Ma Tei</span><span class="zh">油麻地</span></p><h2><span class="en">Between the buildings.</span><span class="zh">穿越大廈之間。</span></h2><p><span class="en">A low virtual flight along the road, rendered with the latest map pack.</span><span class="zh">用最新地圖包重新渲染，沿車路低空穿越。</span></p></article>
+<article class="chapter" data-scene="1" hidden><p class="where"><span class="en">Along the road</span><span class="zh">沿著車路</span></p><h2><span class="en">The city moves around you.</span><span class="zh">城市，在身旁掠過。</span></h2><p><span class="en">Building façades and road details pass on both sides as the camera travels forward.</span><span class="zh">鏡頭向前，兩旁大廈貼圖與道路細節在身邊掠過。</span></p></article>
+<article class="chapter" data-scene="2" hidden><p class="where"><span class="en">At the junction</span><span class="zh">來到路口</span></p><h2><span class="en">Keep the road in view.</span><span class="zh">沿著道路，繼續向前。</span></h2><p><span class="en">The camera stays over the road instead of cutting through buildings.</span><span class="zh">鏡頭沿道路上空行駛，帶出街道之間的空間。</span></p></article>
+<article class="chapter" data-scene="3" hidden><p class="where"><span class="en">Yau Ma Tei after dark</span><span class="zh">入夜的油麻地</span></p><h2><span class="en">The same street, after dark.</span><span class="zh">同一條街，換上夜色。</span></h2><p><span class="en">Window lights and street lights reveal another side of the city.</span><span class="zh">窗燈與街燈亮起，展現城市的另一面。</span></p></article>
+<article class="chapter" data-scene="4" hidden><p class="where"><span class="en">Simulated traffic</span><span class="zh">模擬車流</span></p><h2><span class="en">A little life in the streets.</span><span class="zh">讓街道，多一點生命。</span></h2><p><span class="en">Vehicles follow the road network. This is simulated traffic, not live traffic data.</span><span class="zh">車輛沿路網行駛。這是模擬車流，並非即時交通數據。</span></p></article>
+<article class="chapter" data-scene="5" hidden><p class="where"><span class="en">Above the street</span><span class="zh">街道上方</span></p><h2><span class="en">Lift your perspective.</span><span class="zh">慢慢升起，換個角度。</span></h2><p><span class="en">The camera gently rises while keeping the street and its buildings in view.</span><span class="zh">鏡頭緩緩升高，仍然保留街道與兩旁建築。</span></p></article>
+</div>
+      <p class="film-error" role="status" hidden><span class="en">Use the video player’s controls to start the flight.</span><span class="zh">請使用影片播放器的控制項開始播放。</span></p>
     </div>
   </div>
 </section>
