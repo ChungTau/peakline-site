@@ -29,7 +29,7 @@
     button.addEventListener('click', function () {
       video.pause();
       show(index);
-      video.poster = 'assets/journey/fpv-recut/c' + index + '.webp';
+      video.poster = 'assets/journey/fpv-clean/c' + index + '.webp';
       pending = times[index];
       if (video.readyState >= 1) seek();
       else video.load();

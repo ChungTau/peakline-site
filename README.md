@@ -53,15 +53,15 @@ The landscape hero flies from Hong Kong Island hills across Victoria Harbour,
 then along the centre of a Kowloon road between buildings, before climbing
 with Lion Rock in view and revealing the trail. The street section is brief,
 then the flight accelerates towards the mountain. The ending pulls back to
-the whole territory while the trail and its markers fade away. Lighting progresses from dusk
+the whole territory. No route overlay or route markers appear in the film. Lighting progresses from dusk
 into night, with simulated traffic and the latest full map inputs.
 
-The movie is `assets/journey/fpv-recut.mp4`, with chapter posters extracted from that
-same encoded file under `assets/journey/fpv-recut/`. It contains freshly rendered
+The movie is `assets/journey/fpv-clean.mp4`, with chapter posters extracted from that
+same encoded file under `assets/journey/fpv-clean/`. It contains freshly rendered
 1920 × 1080 frames at 60 fps. Playback and chapter selection are independent of
 scrolling. App Store phone recordings remain separate assets.
 
-The engine repository's `docs/verification/fpv-recut-2026-10-15/flight.py`,
+The engine repository's `docs/verification/fpv-clean-2026-10-15/flight.py`,
 `verify.py` and `encode.py` reproduce the flight, check absolute camera positions
 and verify every decoded output frame. Their output receipt records the actual
 frame count, duration, dimensions and checksum. The old preview and earlier
