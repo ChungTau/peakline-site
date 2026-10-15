@@ -47,19 +47,20 @@ native player and page content should remain available.
 - Support: https://chungtau.github.io/peakline-site/#support
 - Privacy: https://chungtau.github.io/peakline-site/privacy/
 
-## FPV motion preview
+## FPV flight
 
-The hero currently publishes the owner's requested motion preview: Hong Kong
-Island hills, Victoria Harbour, a low road between Kowloon's buildings, then a
-climb over Lion Rock to reveal the route. It uses the latest full map inputs and
-simulated traffic. This is virtual footage, with image-plane banking added in
-encoding. The preview has lower resolution and frame rate than final media.
+The landscape hero flies from Hong Kong Island hills across Victoria Harbour,
+then along the centre of a Kowloon road between buildings, before climbing
+with Lion Rock in view and revealing the trail. Lighting progresses from dusk
+into night, with simulated traffic and the latest full map inputs.
 
-The published movie is `assets/journey/fpv-preview.mp4`; chapter posters under
-`assets/journey/fpv/` are extracted from that exact encoded movie. Playback and
-chapter selection remain independent of scrolling. App Store phone recordings
-are separate assets. The engine workspace's `target/launch-2026-10-15/fpv/`
-contains the working recipe, source frames, render logs and encoder.
+The movie is `assets/journey/fpv60.mp4`, with chapter posters extracted from that
+same encoded file under `assets/journey/fpv60/`. It contains freshly rendered
+1920 × 1080 frames at 60 fps. Playback and chapter selection are independent of
+scrolling. App Store phone recordings remain separate assets.
 
-`tools/journey.py` and `tools/street-flight.py` retain the prior wide aerial and
-street-only recipes as references; neither generates this FPV preview.
+The engine repository's `docs/verification/fpv-60-2026-10-15/flight.py`,
+`verify.py` and `encode.py` reproduce the flight, check absolute camera positions
+and verify every decoded output frame. Their output receipt records the actual
+frame count, duration, dimensions and checksum. The old preview and earlier
+`tools/journey.py` / `tools/street-flight.py` recipes remain comparison material.

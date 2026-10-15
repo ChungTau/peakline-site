@@ -8,8 +8,8 @@
   var error = section.querySelector('.film-error');
   var buttons = Array.from(section.querySelectorAll('[data-chapter]'));
   var chapters = Array.from(section.querySelectorAll('[data-scene]'));
-  // Chapters in the published FPV motion preview.
-  var times = [0, 5, 13, 20, 30, 35];
+  // Chapters in the published dusk-to-night FPV flight.
+  var times = [0, 7, 18, 27, 36, 40];
   var pending = null;
   var current = 0;
 
@@ -29,7 +29,7 @@
     button.addEventListener('click', function () {
       video.pause();
       show(index);
-      video.poster = 'assets/journey/fpv/c' + index + '.webp';
+      video.poster = 'assets/journey/fpv60/c' + index + '.webp';
       pending = times[index];
       if (video.readyState >= 1) seek();
       else video.load();
