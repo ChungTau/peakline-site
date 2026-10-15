@@ -41,72 +41,31 @@
 <section class="journey" aria-labelledby="journey-title">
   <div class="wrap journey-grid">
     <div class="journey-intro">
-      <span class="eyebrow"><span class="en">iPhone &amp; Android · In testing</span><span class="zh">iPhone 及 Android · 測試中</span></span>
+      <span class="eyebrow"><span class="en">Out now on iPhone · Android closed testing</span><span class="zh">iPhone 正式上架 · Android 封閉測試開放</span></span>
       <h1 id="journey-title"><span class="en">Your route.<br>Hong Kong <em>in 3D.</em></span><span class="zh">你的路線，<br><em>立體香港。</em></span></h1>
       <p class="section-lead"><span class="en">Explore the city and its hills, relive a GPX trail, and turn the journey into a film. You choose when to fly.</span><span class="zh">探索城市與山野，重溫 GPX 路線，把旅程製成影片。何時起飛，由你決定。</span></p>
       <div class="ctas">
-        <a class="btn primary" href="#video"><span class="en">Make your route a film</span><span class="zh">把路線製成影片</span></a>
-        <a class="btn ghost" href="#map"><span class="en">Explore the map</span><span class="zh">認識地圖</span></a>
+        <a class="btn primary" href="https://apps.apple.com/app/id6819981205"><span class="en">Download on the App Store</span><span class="zh">在 App Store 下載</span></a>
+        <a class="btn ghost" href="#android"><span class="en">Join Android testing</span><span class="zh">參加 Android 封測</span></a>
       </div>
-      <p class="availability"><span class="en">iPhone with iOS 26 or later · Android 10 or later.<br>Store availability will be announced here.</span><span class="zh">需要 iOS 26 或以上的 iPhone，或 Android 10 或以上裝置。<br>正式上架消息將在此公布。</span></p>
+      <p class="availability"><span class="en">iPhone with iOS 26 or later · Android 10 or later.<br>iPhone version 1.0 is available now. Android is a closed test.</span><span class="zh">需要 iOS 26 或以上的 iPhone，或 Android 10 或以上裝置。<br>iPhone 1.0 現已上架；Android 現正招募封測用家。</span></p>
     </div>
     <div class="journey-player">
-      <div class="film-frame">
-        <video id="journey-video" controls playsinline preload="none" poster="assets/journey/land/c0.webp" aria-label="A flight over Hong Kong in Peakline">
-          <source src="assets/journey/land.mp4" type="video/mp4">
-          <a href="assets/journey/land.mp4">Watch the flight / 觀看飛行影片</a>
+      <div class="film-frame fresh-preview">
+        <video controls playsinline preload="none" poster="assets/launch/route.webp" aria-label="Peakline 1.1 route playback preview">
+          <source src="assets/launch/route-preview.mp4" type="video/mp4">
+          <a href="assets/launch/route-preview.mp4">Watch the route / 觀看路線</a>
         </video>
       </div>
-      <div class="film-toolbar">
-        <button class="film-play" type="button" hidden>
-          <span class="play-label"><span class="en">Play flight</span><span class="zh">播放飛行</span></span>
-          <span class="pause-label"><span class="en">Pause</span><span class="zh">暫停</span></span>
-        </button>
-        <span class="film-note"><span class="en">Choose a scene, or watch the whole flight.</span><span class="zh">選擇場景，或播放整段飛行。</span></span>
-      </div>
-      <nav class="chapters" aria-label="Flight chapters">
-        <button type="button" data-chapter="0" aria-controls="journey-video" aria-pressed="true" disabled><span class="en">Harbour</span><span class="zh">海港</span></button>
-        <button type="button" data-chapter="1" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Streets</span><span class="zh">街道</span></button>
-        <button type="button" data-chapter="2" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Hills</span><span class="zh">山嶺</span></button>
-        <button type="button" data-chapter="3" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Trail</span><span class="zh">路線</span></button>
-        <button type="button" data-chapter="4" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Night</span><span class="zh">入夜</span></button>
-        <button type="button" data-chapter="5" aria-controls="journey-video" aria-pressed="false" disabled><span class="en">Film</span><span class="zh">影片</span></button>
-      </nav>
-      <div class="chapter-copy" aria-live="polite" aria-atomic="true">
-        <article class="chapter" data-scene="0">
-          <p class="where"><span class="en">Victoria Harbour</span><span class="zh">維多利亞港</span></p>
-          <h2><span class="en">The city, in its place.</span><span class="zh">城市，立體呈現。</span></h2>
-          <p><span class="en">Explore Hong Kong in Peakline’s own 3D map. Every frame of this flight comes from the app’s engine.</span><span class="zh">在 Peakline 的立體地圖探索香港。這段飛行的每一格畫面，都來自 App 自己的引擎。</span></p>
-        </article>
-        <article class="chapter" data-scene="1" hidden>
-          <p class="where"><span class="en">Nathan Road</span><span class="zh">彌敦道</span></p>
-          <h2><span class="en">Down to the street.</span><span class="zh">走進街道。</span></h2>
-          <p><span class="en">Buildings, flyovers and road detail, drawn from government survey data.</span><span class="zh">以政府測繪數據呈現大廈、天橋與道路細節。</span></p>
-        </article>
-        <article class="chapter" data-scene="2" hidden>
-          <p class="where"><span class="en">Lion Rock</span><span class="zh">獅子山</span></p>
-          <h2><span class="en">Follow the ridgeline.</span><span class="zh">沿著山脊。</span></h2>
-          <p><span class="en">See the shape of the hills in the light of the hour.</span><span class="zh">在當刻的光影之下，看清山巒地形。</span></p>
-        </article>
-        <article class="chapter" data-scene="3" hidden>
-          <p class="where"><span class="en">MacLehose Trail</span><span class="zh">麥理浩徑</span></p>
-          <h2><span class="en">Bring your trail.</span><span class="zh">帶上你的路線。</span></h2>
-          <p><span class="en">Open a GPX route, add checkpoints and explore its distance, elevation and ground information.</span><span class="zh">開啟 GPX 路線，加入檢查站，查看距離、高度與路面資訊。</span></p>
-        </article>
-        <article class="chapter" data-scene="4" hidden>
-          <p class="where"><span class="en">Yau Ma Tei</span><span class="zh">油麻地</span></p>
-          <h2><span class="en">Stay after dark.</span><span class="zh">留到入夜。</span></h2>
-          <p><span class="en">Windows light up, street lights glow, and the real stars come out.</span><span class="zh">窗戶亮起、街燈發光，真實星空隨之出現。</span></p>
-        </article>
-        <article class="chapter" data-scene="5" hidden>
-          <p class="where"><span class="en">Lion Rock at night</span><span class="zh">夜幕下的獅子山</span></p>
-          <h2><span class="en">Make it a film.</span><span class="zh">把它拍成影片。</span></h2>
-          <p><span class="en">Choose the camera, pace and sunlight, preview your route, then make a video to share.</span><span class="zh">選擇鏡頭、速度和光線，預覽路線，再製作影片分享。</span></p>
-        </article>
-      </div>
-      <p class="film-error" role="status" hidden><span class="en">Use the video player’s controls to start the flight.</span><span class="zh">請使用影片播放器的控制項開始播放。</span></p>
+      <p class="film-note"><span class="en">Fresh capture from the upcoming iPhone 1.1 version. Recorded in the simulator; playback is user-controlled.</span><span class="zh">重新拍攝的 iPhone 1.1 預覽畫面，來自模擬器實際操作。影片由你按播放。</span></p>
     </div>
   </div>
+</section>
+
+<section class="launch-gallery wrap" aria-label="Fresh Peakline screenshots">
+  <figure><img src="assets/launch/harbour.webp" alt="Hong Kong harbour and buildings in Peakline" loading="lazy" width="660" height="1434"><figcaption><span class="en">Hong Kong, in your hand.</span><span class="zh">把香港，放在手心。</span></figcaption></figure>
+  <figure><img src="assets/launch/lion-rock.webp" alt="Lion Rock ridge in Peakline" loading="lazy" width="660" height="1434"><figcaption><span class="en">See the shape of your next climb.</span><span class="zh">下一次上山，先看清山勢。</span></figcaption></figure>
+  <figure><img src="assets/launch/night.webp" alt="Night windows and streets in Peakline" loading="lazy" width="660" height="1434"><figcaption><span class="en">Stay for the lights.</span><span class="zh">留到，萬家燈火。</span></figcaption></figure>
 </section>
 
 <section id="latest" class="latest">
@@ -255,8 +214,21 @@
       <details><summary><span class="en">Do I need an account? How do purchases work?</span><span class="zh">需要帳戶嗎？購買如何運作？</span></summary>
         <p><span class="en">No account. Available purchases use your platform’s store account: App Store on iPhone or Google Play on Android. Restore eligible purchases in Settings using the same store account. Manage renewals in that store’s subscriptions settings.</span><span class="zh">不需要帳戶。可購買項目經所用平台的商店帳戶處理：iPhone 使用 App Store，Android 使用 Google Play。以同一商店帳戶登入後，可在設定中恢復合資格購買；續期請在該商店的訂閱設定管理。</span></p></details>
       <details><summary><span class="en">Is there an Android version?</span><span class="zh">有 Android 版嗎？</span></summary>
-        <p><span class="en">Yes. The Android app is in testing through Google Play; the iPhone app is awaiting App Store review. Public availability will be announced here.</span><span class="zh">有。Android App 正透過 Google Play 測試；iPhone App 正等待 App Store 審核。正式上架消息將在此公布。</span></p></details>
+        <p><span class="en">Yes. Join the Google Group, then opt in to the closed test with the same Google account used in Google Play. Follow the steps below. The iPhone app is available on the App Store.</span><span class="zh">有。Android App 正透過 Google Play 測試；iPhone App 正等待 App Store 審核。iPhone 1.0 現已上架；Android 現正招募封測用家。</span></p></details>
     </div>
+  </div>
+</section>
+
+<section id="android" class="support">
+  <div class="wrap">
+    <h2><span class="en">Help shape Peakline on Android.</span><span class="zh">一齊試好 Android 版 Peakline。</span></h2>
+    <p class="section-lead"><span class="en">Closed testing is open. Use the same Google account for all steps.</span><span class="zh">封閉測試現已開放。以下步驟請用同一個 Google 帳戶。</span></p>
+    <ol style="max-width:42rem;margin:2rem auto;text-align:left;line-height:2">
+      <li><a href="https://groups.google.com/g/peakline-android-tester"><span class="en">Join the tester Google Group</span><span class="zh">加入測試者 Google 群組</span></a></li>
+      <li><a href="https://play.google.com/apps/testing/app.peakline"><span class="en">Become a tester</span><span class="zh">按「成為測試人員」</span></a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=app.peakline"><span class="en">Install Peakline from Google Play</span><span class="zh">從 Google Play 安裝 Peakline</span></a></li>
+    </ol>
+    <p><span class="en">If the app is unavailable, check your account and group membership, then try again later. Download the optional Hong Kong map over Wi-Fi. Video exports include a trial and optional in-app purchases.</span><span class="zh">若未能下載，請檢查帳戶及群組會員資格，稍後再試。建議以 Wi-Fi 下載選用的全港地圖。影片製作提供試用及可選的 App 內購買項目。</span></p>
   </div>
 </section>
 
