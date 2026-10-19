@@ -177,7 +177,8 @@ details p { color: var(--ink-soft); margin: 12px 0 0; }
 
 footer { border-top: 1px solid rgba(255, 255, 255, 0.07); padding: 34px 0 48px; color: var(--ink-faint); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; }
-footer nav { display: flex; gap: 22px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 14px 22px; }
+footer nav a { white-space: nowrap; }
 footer a { color: var(--ink-soft); }
 .credits { flex-basis: 100%; font-size: 13px; }
 
