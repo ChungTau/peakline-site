@@ -17,6 +17,9 @@ There is no animation loop or whole-video fetch into JavaScript memory.
 - `index.html`: the landing page, current platform/testing availability and
   the version 1.1 preview, App Store download and Android testing steps.
 - `privacy/`, `terms/`, `404.html`: the policy, terms and not-found page.
+- `credits/`: map-data ownership, sources and licences, linked from shared route
+  images and the website footer. Keep the acknowledgements aligned with the
+  app's canonical `crates/hk3d-ffi/src/attribution.txt` in the engine repository.
 - `assets/launch/`: fresh app screenshots and route preview recorded for this release.
 - `assets/journey/`: previous engine films, retained as source/reference assets.
 - `tools/journey.py`: the source camera paths and commands used to render the
@@ -46,6 +49,7 @@ native player and page content should remain available.
 - Marketing: https://chungtau.github.io/peakline-site/
 - Support: https://chungtau.github.io/peakline-site/#support
 - Privacy: https://chungtau.github.io/peakline-site/privacy/
+- Map credits: https://chungtau.github.io/peakline-site/credits/
 
 ## FPV flight
 
